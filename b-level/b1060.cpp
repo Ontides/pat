@@ -17,7 +17,7 @@
  6
  */
 #include <cstdio>
-#define MAX 100000
+#define MAX 100001
 int a[MAX], b[MAX+1];
 int main(){
     int n, max = 0, min = MAX, e = 0;
@@ -31,13 +31,13 @@ int main(){
             min = a[i];
         }
     }
+    //b[i]为超过i英里的天数
     for (int i = 1; i <= n; i++) {
-        for (int j = min - 1; j < a[i] && j <= MAX; j++) {
+        for (int j = min; j < a[i] && j < MAX; j++) {
             b[j]++;
         }
     }
-    
-    for (int i = min - 1; i <= max; i++) {
+    for (int i = min; i <= max; i++) {
         if (b[i] < i) {
             e = i-1;
             break;
